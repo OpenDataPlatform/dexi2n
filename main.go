@@ -21,11 +21,12 @@ var mHash = func() hash.Hash {
 var encoding = base32.NewEncoding("abcdefghijklmnopqrstuvwxyz234567")
 
 func main() {
-	//fmt.Printf("id2name\n")
 	if len(os.Args) <= 1 || os.Args[1] == "" {
 		_, _ = fmt.Fprintf(os.Stderr, "Usage: dexi2n <clientID>\n")
 		os.Exit(2)
 	}
 	id := os.Args[1]
+	// This has been copied from Dex source code:
+	// https://github.com/dexidp/dex/blob/v2.30.2/storage/kubernetes/client.go  line 75
 	fmt.Printf("%s\n", strings.TrimRight(encoding.EncodeToString(mHash().Sum([]byte(id))), "="))
 }
