@@ -20,11 +20,11 @@ redirectURIs:
 secret: ZXhhbXBsZS1hcHAtc2VjcmV0
 ```
 
-This aproach has several risks and limitations:
+This approach has several risks and limitations:
 
 - The Dex server must be configured to use 'kubernetes' as his storage layer.
 - As this is undocumented, this resource format may change with Dex version.
-- Currently, Dex is accessing this storage on each request. So, there is no need to reload or perform any action for this new resource to be taken in account. May be this behavior may change in the future.
+- Currently, Dex is accessing this storage on each request. So, there is no need to reload or perform any action for this new resource to be taken in account. Maybe this behavior may change in the future.
 
 So, if you can accept these constraints, you may want to use this method. 
 
@@ -34,4 +34,6 @@ But, there is another trick: The resource name must be the clientID encoded in a
 $ dexi2n example-app
 mv4gc3lqnrss2ylqodf7fhheqqrcgji
 ```
+
+Of course, there is no guaranty this encoding will remain the same in the future. Use this undocumented trick at your own risk!.
 
